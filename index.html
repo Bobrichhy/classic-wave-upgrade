@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classic Wave | Luxury Fragrances for UNILAG</title>
+    <meta name="description" content="Classic Wave — premium luxury fragrances delivered to your UNILAG hostel. Shop perfumes, body sprays and roll-ons. Fast campus delivery. Order via WhatsApp." />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Classic Wave | Luxury Fragrances for UNILAG" />
+    <meta property="og:description" content="Premium perfumes & body sprays delivered straight to your UNILAG hostel. Affordable luxury. Order in minutes via WhatsApp." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=1200" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Classic Wave | Luxury Fragrances for UNILAG" />
+    <meta name="twitter:description" content="Premium perfumes & body sprays delivered straight to your UNILAG hostel." />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=1200" />
+
+    <!-- Favicon (replace /favicon.ico with your actual icon file) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+              serif: ['"Bodoni Moda"', 'serif'],
+            },
+            animation: {
+              'shimmer': 'shimmer 8s linear infinite',
+              'marquee': 'marquee 40s linear infinite',
+            },
+            keyframes: {
+              shimmer: {
+                '0%': { backgroundPosition: '-200% center' },
+                '100%': { backgroundPosition: '200% center' },
+              },
+              marquee: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-50%)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #000000;
+        color: #FFFFFF;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .font-serif {
+        font-family: 'Bodoni Moda', serif;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #FFD700;
+        border-radius: 10px;
+      }
+      /* Ensure high contrast serif looks crisp */
+      h1, h2, h3, .font-serif {
+        letter-spacing: -0.02em;
+      }
+
+      /* Ken Burns Effect */
+      @keyframes kenburns {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.15); }
+      }
+      .ken-burns {
+        animation: kenburns 12s ease-out forwards;
+      }
+
+      /* Shimmering Text Gradient */
+      .shimmer-text {
+        background: linear-gradient(
+          to right,
+          #ffffff 0%,
+          #FFD700 25%,
+          #ffffff 50%,
+          #FFD700 75%,
+          #ffffff 100%
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shimmer 6s linear infinite;
+      }
+
+      /* Slide-in animations */
+      @keyframes slideInRight {
+        from { transform: translateX(100%); }
+        to { transform: translateX(0); }
+      }
+      .animate-slide-in-right {
+        animation: slideInRight 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
+      }
+
+      @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-down {
+        animation: fadeInDown 0.25s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* Hide scrollbar utility */
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

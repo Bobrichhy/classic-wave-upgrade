@@ -1,0 +1,7 @@
+{
+  "name": "Classic Wave Perfume Store reborn",
+  "description": "Luxurious e-commerce platform for perfumes, body sprays, and body oils, specifically tailored for the UNILAG community.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
