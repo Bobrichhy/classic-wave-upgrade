@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from './_lib/types';
-import { scentRecommendation, normalizeError } from './_lib/gemini';
+import { scentRecommendation, normalizeError } from './_lib/gemini.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {

@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import { PRODUCTS } from "../../constants";
+import { PRODUCTS } from "../../constants.js";
 
 function getClient() {
   const apiKey = process.env.GEMINI_API_KEY;

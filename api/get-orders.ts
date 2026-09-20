@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from './_lib/types';
-import { getOrdersByPhone } from './_lib/supabase';
+import { getOrdersByPhone } from './_lib/supabase.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
