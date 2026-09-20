@@ -12,6 +12,7 @@ import ScentQuiz from './pages/ScentQuiz';
 import DesignStudio from './pages/DesignStudio';
 import ImageAnalyzer from './pages/ImageAnalyzer';
 import VIPCollection from './pages/VIPCollection';
+import OnboardingTour from './components/OnboardingTour';
 import { CartItem, Product } from './types';
 
 const WA_NUMBER = '2348085597947';
@@ -132,6 +133,7 @@ const App: React.FC = () => {
 
         <WhatsAppFAB />
         <BackToTop />
+        <OnboardingTour />
       </div>
     </Router>
   );
