@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Menu, X, ShoppingCart, Search, Sparkles, Scan } from 'lucide-react';
+import { Menu, X, ShoppingCart, Search, Sparkles, Scan, Crown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface HeaderProps {
@@ -16,6 +16,7 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onCartClick }) => {
     { name: 'PERFUME', to: '/category/PERFUME' },
     { name: 'BODY SPRAY', to: '/category/BODY_SPRAY' },
     { name: 'ROLL ON', to: '/category/ROLL_ON' },
+    { name: 'VIP', to: '/vip', icon: <Crown size={12} />, highlight: true },
     { name: 'QUIZ', to: '/quiz' },
     { name: 'SCANNER', to: '/scanner', icon: <Scan size={12} />, highlight: false },
     { name: 'STUDIO', to: '/studio', icon: <Sparkles size={12} />, highlight: true },

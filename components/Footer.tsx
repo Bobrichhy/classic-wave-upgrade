@@ -26,6 +26,7 @@ const Footer: React.FC = () => {
             <li><Link to="/category/PERFUME" className="hover:text-[#FFD700]">Perfumes</Link></li>
             <li><Link to="/category/BODY_SPRAY" className="hover:text-[#FFD700]">Body Sprays</Link></li>
             <li><Link to="/category/ROLL_ON" className="hover:text-[#FFD700]">Roll ons</Link></li>
+            <li><Link to="/vip" className="hover:text-[#FFD700]">VIP Collection</Link></li>
             <li><Link to="/quiz" className="hover:text-[#FFD700]">Scent Quiz</Link></li>
           </ul>
         </div>

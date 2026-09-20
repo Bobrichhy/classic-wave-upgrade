@@ -11,6 +11,7 @@ import OrderPage from './pages/OrderPage';
 import ScentQuiz from './pages/ScentQuiz';
 import DesignStudio from './pages/DesignStudio';
 import ImageAnalyzer from './pages/ImageAnalyzer';
+import VIPCollection from './pages/VIPCollection';
 import { CartItem, Product } from './types';
 
 const WA_NUMBER = '2348085597947';
@@ -111,6 +112,7 @@ const App: React.FC = () => {
             <Route path="/category/:categoryId" element={<CategoryPage onAddToCart={addToCart} />} />
             <Route path="/order" element={<OrderPage cartItems={cartItems} />} />
             <Route path="/quiz" element={<ScentQuiz onAddToCart={addToCart} />} />
+            <Route path="/vip" element={<VIPCollection onAddToCart={addToCart} />} />
             <Route path="/studio" element={<DesignStudio />} />
             <Route path="/scanner" element={<ImageAnalyzer />} />
             {/* Catch-all route for safety */}

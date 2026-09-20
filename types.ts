@@ -21,6 +21,7 @@ export interface Product {
   notes: string;
   imageUrl: string;
   videoUrl?: string; // Optional mockup video URL
+  vip?: boolean; // Exclusive designer collection — shown on /vip, hidden from regular category browsing
 }
 
 export interface CartItem extends Product {

@@ -21,8 +21,8 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ onAddToCart }) => {
 
   const filteredProducts = useMemo(() => {
     if (!categoryId) return [];
-    return PRODUCTS.filter(p => 
-      p.category === categoryId && (activeGender === 'ALL' || p.gender === activeGender)
+    return PRODUCTS.filter(p =>
+      p.category === categoryId && !p.vip && (activeGender === 'ALL' || p.gender === activeGender)
     );
   }, [categoryId, activeGender]);
 
