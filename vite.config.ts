@@ -2,13 +2,14 @@ import path from 'path';
 import { defineConfig, loadEnv, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import { scentRecommendation, generateImage, analyzeImage, normalizeError } from './api/_lib/gemini';
+import { createOrder, getOrdersByPhone } from './api/_lib/supabase';
 
 // Serves the same /api/* endpoints locally that Vercel serves in production,
-// so `npm run dev` works without the Vercel CLI. The Gemini API key never
-// reaches the browser — it's only read here, server-side.
-function geminiApiDevMiddleware(): Plugin {
+// so `npm run dev` works without the Vercel CLI. Secrets (Gemini key,
+// Supabase service key) never reach the browser — only read here, server-side.
+function apiDevMiddleware(): Plugin {
   return {
-    name: 'gemini-api-dev-middleware',
+    name: 'api-dev-middleware',
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
         if (req.method !== 'POST' || !req.url?.startsWith('/api/')) return next();
@@ -25,6 +26,7 @@ function geminiApiDevMiddleware(): Plugin {
         try {
           const body = await readBody();
           let result: unknown;
+          let status = 200;
 
           if (req.url === '/api/scent-recommendation') {
             result = await scentRecommendation(body);
@@ -32,10 +34,20 @@ function geminiApiDevMiddleware(): Plugin {
             result = { imageUrl: await generateImage(body.productName) };
           } else if (req.url === '/api/analyze-image') {
             result = { text: await analyzeImage(body.base64Data, body.mimeType) };
+          } else if (req.url === '/api/create-order') {
+            result = { order: await createOrder(body) };
+          } else if (req.url === '/api/get-orders') {
+            if (!body.phone || String(body.phone).replace(/\D/g, '').length < 7) {
+              status = 400;
+              result = { error: 'INVALID_PHONE' };
+            } else {
+              result = { orders: await getOrdersByPhone(body.phone) };
+            }
           } else {
             return next();
           }
 
+          res.statusCode = status;
           res.setHeader('Content-Type', 'application/json');
           res.end(JSON.stringify(result));
         } catch (err: any) {
@@ -53,13 +65,15 @@ export default defineConfig(({ mode }) => {
   // Only used server-side (this config file + the dev middleware above) —
   // never inlined into the client bundle.
   process.env.GEMINI_API_KEY = env.GEMINI_API_KEY || process.env.GEMINI_API_KEY || '';
+  process.env.SUPABASE_URL = env.SUPABASE_URL || process.env.SUPABASE_URL || '';
+  process.env.SUPABASE_SECRET_KEY = env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SECRET_KEY || '';
 
   return {
     server: {
       port: 3000,
       host: '0.0.0.0',
     },
-    plugins: [react(), geminiApiDevMiddleware()],
+    plugins: [react(), apiDevMiddleware()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

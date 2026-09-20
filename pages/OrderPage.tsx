@@ -31,11 +31,34 @@ const OrderPage: React.FC<OrderPageProps> = ({ cartItems }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!screenshot) {
       alert("Please upload your payment screenshot before placing the order.");
       return;
+    }
+
+    // Save the order so the customer can look it up later by phone number.
+    // Best-effort only — WhatsApp remains the source of truth for fulfilment,
+    // so a save failure here should never block checkout.
+    try {
+      await fetch('/api/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          customer_name: formData.name,
+          phone: formData.phone,
+          hostel: wantsDelivery ? formData.hostel : null,
+          fulfilment: wantsDelivery ? 'delivery' : 'pickup',
+          notes: formData.notes || null,
+          items: cartItems,
+          subtotal,
+          delivery_fee: deliveryFee,
+          total,
+        }),
+      });
+    } catch (err) {
+      console.error('Failed to save order history', err);
     }
 
     const itemList = cartItems

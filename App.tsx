@@ -12,6 +12,7 @@ import ScentQuiz from './pages/ScentQuiz';
 import DesignStudio from './pages/DesignStudio';
 import ImageAnalyzer from './pages/ImageAnalyzer';
 import VIPCollection from './pages/VIPCollection';
+import MyOrders from './pages/MyOrders';
 import OnboardingTour from './components/OnboardingTour';
 import { CartItem, Product } from './types';
 
@@ -112,6 +113,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home onAddToCart={addToCart} />} />
             <Route path="/category/:categoryId" element={<CategoryPage onAddToCart={addToCart} />} />
             <Route path="/order" element={<OrderPage cartItems={cartItems} />} />
+            <Route path="/my-orders" element={<MyOrders />} />
             <Route path="/quiz" element={<ScentQuiz onAddToCart={addToCart} />} />
             <Route path="/vip" element={<VIPCollection onAddToCart={addToCart} />} />
             <Route path="/studio" element={<DesignStudio />} />

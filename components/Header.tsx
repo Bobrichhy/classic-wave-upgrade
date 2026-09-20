@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Menu, X, ShoppingCart, Search, Sparkles, Scan, Crown } from 'lucide-react';
+import { Menu, X, ShoppingCart, Search, Sparkles, Scan, Crown, PackageSearch } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface HeaderProps {
@@ -21,6 +21,7 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onCartClick }) => {
     { name: 'SCANNER', to: '/scanner', icon: <Scan size={12} />, highlight: false },
     { name: 'STUDIO', to: '/studio', icon: <Sparkles size={12} />, highlight: true },
     { name: 'ORDER', to: '/order' },
+    { name: 'MY ORDERS', to: '/my-orders', icon: <PackageSearch size={12} /> },
   ];
 
   return (
@@ -34,12 +35,12 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onCartClick }) => {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6 lg:space-x-8 items-center">
+          <div className="hidden md:flex space-x-4 lg:space-x-7 items-center">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.to}
-                className={`flex items-center gap-1 transition-colors text-[11px] lg:text-sm font-medium tracking-wider ${
+                className={`flex items-center gap-1 whitespace-nowrap transition-colors text-[10px] lg:text-[13px] font-medium tracking-wider ${
                   link.highlight ? 'text-[#FFD700] hover:text-white' : 'text-[#C0C0C0] hover:text-[#FFD700]'
                 }`}
               >
